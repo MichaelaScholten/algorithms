@@ -10,7 +10,7 @@ mod tests {
     use super::{bubble, insertion, merge};
 
     fn attempt_sort(sort: impl Fn(&mut [usize]), length: usize) {
-        let mut data = (0..length).rev().collect::<Vec<usize>>();
+        let mut data = (0..length).rev().collect::<Vec<_>>();
         sort(&mut data);
         assert!(data.is_sorted());
     }
