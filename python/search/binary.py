@@ -1,6 +1,4 @@
-'''
-Returns the index of the value or `None`
-'''
+''' Returns the index of the value or `None`. '''
 def search(data: list, value) -> int:
     a, b = 0, len(data)
     while a - b > 1:
