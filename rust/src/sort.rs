@@ -1,9 +1,12 @@
 pub mod bubble;
 pub mod insertion;
 pub mod merge;
+pub mod selection;
 
 #[cfg(test)]
 mod tests {
+    use crate::sort::selection;
+
     use super::{bubble, insertion, merge};
 
     fn attempt_sort(sort: impl Fn(&mut [usize]), length: usize) {
@@ -25,5 +28,10 @@ mod tests {
     #[test]
     fn merge_test() {
         attempt_sort(merge::sort, 1_000);
+    }
+
+    #[test]
+    fn selection_test() {
+        attempt_sort(selection::sort, 1_000);
     }
 }
