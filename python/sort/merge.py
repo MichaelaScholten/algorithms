@@ -1,4 +1,4 @@
-def sort(data: list):
+def sort(data: list) -> None:
     length = len(data)
     if length == 2 and data[0] > data[1]:
         data[0], data[1] = data[1], data[0]

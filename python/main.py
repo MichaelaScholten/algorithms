@@ -1,4 +1,4 @@
-from sort import data, bubble, insertion, merge
+from sort import data, bubble, insertion, merge, selection
 import time
 
 def attempt_sort(algorithm, length: int):
@@ -13,5 +13,5 @@ def attempt_sort(algorithm, length: int):
 
 attempt_sort(bubble.sort, 4_000)
 attempt_sort(insertion.sort, 4_000)
+attempt_sort(selection.sort, 4_000)
 attempt_sort(merge.sort, 100_000)
-
