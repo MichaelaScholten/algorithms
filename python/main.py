@@ -1,6 +1,6 @@
 import data
 from sort import bubble, insertion, merge, selection
-from search import linear
+from search import linear, binary
 import time
 
 def attempt_sort(algorithm, length: int) -> None:
@@ -28,7 +28,7 @@ def attempt_search(algorithm, length: int) -> None:
         if linear.search(numbers, length) == None:
             print("Found all values")
         else:
-            print("Found non existing value")
+            print("Found non-existent value")
     print(time.perf_counter() - start)
 
 attempt_sort(bubble.sort, 4_000)
@@ -37,3 +37,4 @@ attempt_sort(selection.sort, 4_000)
 attempt_sort(merge.sort, 100_000)
 
 attempt_search(linear.search, 8_000)
+attempt_search(binary.search, 8_000)
