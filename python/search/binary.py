@@ -9,3 +9,5 @@ def search(data: list, value) -> int:
             a = c
         else:
             b = c
+
+    return a if data[a] == value else None
