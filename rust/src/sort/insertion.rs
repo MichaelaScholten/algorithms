@@ -7,6 +7,8 @@ pub fn sort<T: PartialOrd>(data: &mut [T]) {
             // Swap the elements if in the wrong order
             if data[j - 1] > data[j] {
                 data.swap(j - 1, j);
+            } else {
+                break;
             }
         }
     }

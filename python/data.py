@@ -1,6 +1,8 @@
+import random
+
 ''' Generates a reverse sorted list with `length' elements. '''
 def generate_unsorted(length: int) -> list[int]:
-    return list(reversed(range(length)))
+    return list(map(lambda _: random.random(), range(length)))
 
 ''' Generates a sorted list with `length' elements. '''
 def generate_sorted(length: int) -> list[int]:
