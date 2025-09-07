@@ -1,9 +1,10 @@
 pub mod bubble;
 pub mod insertion;
+pub mod merge;
 
 #[cfg(test)]
 mod tests {
-    use crate::sort::{bubble, insertion};
+    use super::{bubble, insertion, merge};
 
     fn attempt_sort(sort: impl Fn(&mut [usize]), length: usize) {
         let mut data = (0..length).rev().collect::<Vec<usize>>();
@@ -19,5 +20,10 @@ mod tests {
     #[test]
     fn insertion_test() {
         attempt_sort(insertion::sort, 1_000);
+    }
+
+    #[test]
+    fn merge_test() {
+        attempt_sort(merge::sort, 1_000);
     }
 }
