@@ -34,7 +34,7 @@ def attempt_search(algorithm, length: int) -> None:
     # Sort every value in the data
     for i in range(length):
         # search for a value
-        index = linear.search(numbers, i)
+        index = algorithm(numbers, i)
 
         # None means the value wasn't found, which isn't possible.
         # So we display a message and break out of the loop
