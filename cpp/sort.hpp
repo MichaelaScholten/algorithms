@@ -84,6 +84,6 @@ void selection_sort(std::vector<T>& data){
             }
         }
 
-        swap(i, lowest_index);
+        swap(data[i], data[lowest_index]);
     }
 }
