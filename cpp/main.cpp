@@ -11,7 +11,7 @@ using chrono::seconds;
 using chrono::nanoseconds;
 
 double seconds_since(steady_clock::time_point since){
-    return (steady_clock::now() - since).count() /
+    return (double)(steady_clock::now() - since).count() /
         (seconds(1) / nanoseconds(1));
 }
 
@@ -35,15 +35,13 @@ bool is_sorted(const std::vector<T>& data){
     return true;
 }
 
-void attempt_sort(std::function<void(std::vector<uint_fast32_t>&)> algorithm, const size_t length){
+void attempt_sort(const std::string& name, std::function<void(std::vector<uint_fast32_t>&)> algorithm, const size_t length){
     steady_clock::time_point start = steady_clock::now();
     std::vector<uint_fast32_t> data = generate_unsorted(length);
     algorithm(data);
     
-    if(is_sorted(data)){
-        std::cout << "Data is sorted\n";
-    }else{
-        std::cout << "Sorting failed:";
+    if(!is_sorted(data)){
+        std::cout << name << " failed:";
         if(data.empty()){
             std::cout << " empty\n";
             return;
@@ -56,19 +54,15 @@ void attempt_sort(std::function<void(std::vector<uint_fast32_t>&)> algorithm, co
         exit(EXIT_FAILURE);
     }
 
-    std::cout << seconds_since(start) << " seconds\n";
+    std::cout << name << ": passed in " << seconds_since(start) << " seconds\n";
 }
 
 int main(){
-    std::cout << "bubble sort\n";
-    attempt_sort(bubble_sort<uint_fast32_t>, 10);
+    attempt_sort("bubble sort", bubble_sort<uint_fast32_t>, 30000);
 
-    std::cout << "insertion sort\n";
-    attempt_sort(insertion_sort<uint_fast32_t>, 10);
+    attempt_sort("insertion sort", insertion_sort<uint_fast32_t>, 60000);
 
-    std::cout << "merge sort\n";
-    attempt_sort(merge_sort<uint_fast32_t>, 10);
+    attempt_sort("merge sort", merge_sort<uint_fast32_t>, 6000000);
 
-    std::cout << "selection sort\n";
-    attempt_sort(selection_sort<uint_fast32_t>, 10);
+    attempt_sort("selection sort", selection_sort<uint_fast32_t>, 40000);
 }
