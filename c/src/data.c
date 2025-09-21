@@ -19,9 +19,13 @@ void Vec_push(Vec *self, const size_t value){
     if(self == NULL){
         return;
     }
+    if(self->capacity == 0){
+        self->capacity = 1;
+        self->value = (size_t*)malloc(sizeof(size_t));
+    }
     if(self->length >= self->capacity){
-        self->capacity *= 2;
-        self->value = realloc(self->value, self->capacity * sizeof(size_t));
+        self->capacity = self->capacity * 2;
+        self->value = (size_t*)realloc(self->value, self->capacity * sizeof(size_t));
     }
     if(self->value == NULL){
         self->capacity = 0;
