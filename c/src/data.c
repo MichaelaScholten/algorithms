@@ -31,20 +31,6 @@ void Vec_push(Vec *self, const size_t value){
     self->value[self->length++] = value;
 }
 
-size_t Vec_get(Vec *self, const size_t index){
-    if(self == NULL || self->length <= index){
-        return 0;
-    }
-    return self->value[index];
-}
-
-size_t* Vec_get_mut(Vec *self, const size_t index){
-    if(self == NULL || self->length <= index){
-        return 0;
-    }
-    return self->value + index;
-}
-
 void Vec_drop(Vec *self){
     if(self == NULL){
         return;
